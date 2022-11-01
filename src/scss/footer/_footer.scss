@@ -1,0 +1,101 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.footer{
+    margin-top: 6.25rem;
+   text-align: center;
+   background-color: v.$Black; 
+   padding-block:3.75rem 1.25rem;
+
+   &__logo{
+    width: 9.375rem;
+    margin: 0 auto;
+   }
+  &__nav--links{
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+  &__nav--link{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: v.$White;
+    font-size: 1.125rem;
+  }
+}
+
+.social-media{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.625rem;
+
+    &__link{
+      cursor: pointer;
+        &::before{
+            content: '';
+            padding: 0.75rem;
+            display: inline-block;
+        }
+        &[href*='facebook.com']::before{
+            background-image: url(../img/icon-facebook.svg);
+            background-position: center;
+        }
+        &[href*='twitter.com']::before{
+            background-image: url(../img/icon-twitter.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        &[href*='pinterest.com']::before{
+            background-image: url(../img/icon-pinterest.svg);
+            background-position: center;
+        }
+        &[href*='instagram.com']::before{
+            background-image: url(../img/icon-instagram.svg);
+            background-position: center;
+        }
+    }
+
+    &__accecible{
+       width: 0.0625rem;
+       height: 0.0625rem;
+       padding: 0;
+       margin: -0.0625rem;
+       overflow: hidden;
+       clip: rect(0,0,0,0);
+       border: 0;
+       display: block;
+    }
+}
+.corpy-right{
+    margin-top: 1.25rem;
+    color: v.$DarkGray;
+    font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+    .footer{
+        padding: 3.125rem 8.75rem ;
+        display: flex;
+        justify-content: space-between;
+        &__logo{
+            margin: 0;
+        }
+        &__nav{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            &--links{
+                flex-direction: row;
+                margin-top: 1.25rem;
+            }
+        }
+    }
+
+    .social-media{
+        margin: 0;
+        justify-content: flex-end;
+    }
+}

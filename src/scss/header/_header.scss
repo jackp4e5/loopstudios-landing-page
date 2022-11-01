@@ -1,0 +1,129 @@
+
+
+.hero{
+    background-image: url(../img/mobile/image-hero.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:40.625rem;
+    padding: 2.5rem 1.25rem;
+    position: relative;
+
+    &__description{
+        margin: auto;
+        margin-top: 50%;
+        border: 0.125rem solid white;
+        padding: 1.875rem;
+        width: 97%;
+        max-width: 24.6875rem;
+    
+        &--text{
+            font-size: 2.5rem;
+            color: white;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media (min-width:768px) {
+    .hero{
+        background-image: url(../img/desktop/image-hero.jpg);
+        height:100vh;
+        padding: 2.5rem 6.25rem;
+    
+        &__description{
+            margin: 0 ;
+            max-width: 32.5rem;
+            position: absolute;
+            top: 40%;
+        
+            &--text{
+                font-size: 3.75rem;
+                color: white;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.nav{
+    --state-close:scale(0);
+    --state-hamburger:scale(1); 
+    --state-menu:translateX(-100%); 
+
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: repeat(2, max-content);
+
+    &:target{
+        --state-close:scale(1);
+        --state-hamburger:scale(0); 
+        --state-menu:translateX(0);  
+    }
+}
+
+.nav__close,
+.nav__hamburger{
+    z-index: 2;
+    cursor: pointer;
+    grid-column: -2/-1;
+    grid-row: 1/2;
+    transition: transform .4s;
+}
+
+.nav__hamburger{
+    transform: var(--state-hamburger);
+}
+.nav__close{
+    transform: var(--state-close);
+}
+
+.nav__links{
+    z-index: 1;
+    align-content: center;
+    background-color: hsl(0deg 0% 0%);
+    inset: 0;
+    display: grid;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    position: absolute;
+    transform: var(--state-menu);
+    transition: transform .4s linear;
+    width: 100%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    height: 40.625rem;
+}
+
+.nav__link{
+    text-decoration: none;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .nav{
+        align-items: unset;
+        height: 1.875rem;
+        --state-hamburger:scale(0); 
+        --state-menu:translateX(1);  
+    }
+
+    .nav:target{
+        --state-close:scale(0); 
+    }
+
+    .nav__links{
+        align-content: unset;
+        padding: 0;
+        background-color:unset;
+        gap: 20px;
+        position: unset;
+        transform: unset;
+        grid-auto-flow: column;
+        grid-column: -2/-1;
+        grid-row: 1/2;
+        height: 30px;
+        font-size: 18px;
+        text-transform: capitalize; ;
+    }
+}
